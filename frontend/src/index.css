@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-slate-950 text-white antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(37, 99, 235, 0.24), transparent 28%),
+      radial-gradient(circle at 80% 10%, rgba(56, 189, 248, 0.16), transparent 24%),
+      linear-gradient(180deg, #0f172a 0%, #020617 100%);
+  }
+
+  ::selection {
+    background: rgba(56, 189, 248, 0.3);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.9);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background: rgba(100, 116, 139, 0.5);
+    border: 2px solid rgba(15, 23, 42, 0.9);
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    @apply outline-none transition;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(226, 232, 240, 0.5);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply border border-white/10 bg-white/5 shadow-glass backdrop-blur-xl;
+  }
+
+  .glass-panel-strong {
+    @apply border border-white/15 bg-white/10 shadow-glass backdrop-blur-2xl;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent;
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
