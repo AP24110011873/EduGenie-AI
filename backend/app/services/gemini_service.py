@@ -1,5 +1,6 @@
 import google.generativeai as genai
 from app.config.settings import GEMINI_API_KEY
+import json
 
 genai.configure(api_key=GEMINI_API_KEY)
 
@@ -46,3 +47,39 @@ Document:
         return response.text
     except Exception as e:
         return str(e)
+
+def generate_quiz(topic: str, difficulty: str, count: int):
+
+    prompt = f"""
+You are an expert teacher.
+
+Generate {count} multiple-choice questions on "{topic}".
+
+Difficulty: {difficulty}
+
+Return ONLY valid JSON.
+
+Format:
+
+[
+  {{
+    "question":"...",
+    "options":[
+      "...",
+      "...",
+      "...",
+      "..."
+    ],
+    "answer":"..."
+  }}
+]
+"""
+
+    response = model.generate_content(prompt)
+
+    text = response.text.strip()
+
+    if text.startswith("```json"):
+        text = text.replace("```json", "").replace("```", "").strip()
+
+    return json.loads(text)
