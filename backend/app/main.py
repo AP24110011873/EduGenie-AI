@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from app.routes.auth import router as auth_router
 from app.routes.user import router as user_router
 from app.routes.ai import router as ai_router
+from app.routes.pdf import router as pdf_router
 
 app = FastAPI(
     title="EduGenie AI API",
@@ -11,6 +12,11 @@ app = FastAPI(
 app.include_router(auth_router, prefix="/api/auth", tags=["Authentication"])
 app.include_router(user_router, prefix="/api/user", tags=["User"])
 app.include_router(ai_router, prefix="/api/ai", tags=["AI"])
+app.include_router(
+    pdf_router,
+    prefix="/api/pdf",
+    tags=["PDF"]
+)
 
 @app.get("/")
 def home():

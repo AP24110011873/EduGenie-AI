@@ -21,3 +21,28 @@ def generate_response(prompt: str):
 
     except Exception as e:
         return f"Error: {str(e)}"
+
+def summarize_text(text: str):
+
+    prompt = f"""
+You are an AI Learning Assistant.
+
+Summarize the following document.
+
+Requirements:
+- Explain in simple language.
+- Use headings.
+- Use bullet points.
+- Include key concepts.
+- Keep it concise.
+
+Document:
+
+{text}
+"""
+
+    try:
+        response = model.generate_content(prompt)
+        return response.text
+    except Exception as e:
+        return str(e)

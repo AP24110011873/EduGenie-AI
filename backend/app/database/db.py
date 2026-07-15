@@ -12,3 +12,4 @@ users = db.users
 chat_history = db.chat_history
 notes = db.notes
 quizzes = db.quizzes
+summaries = db.summaries
